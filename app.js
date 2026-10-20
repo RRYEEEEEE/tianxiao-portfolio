@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const {projects, accounts} = window.PORTFOLIO;
+  const {projects} = window.PORTFOLIO;
   const caseDialog=document.querySelector('#case-dialog');
   const body=document.querySelector('#dialog-body');
   const credits=document.querySelector('#credits-dialog');
@@ -16,13 +16,6 @@
   document.querySelectorAll('[data-project]').forEach(button=>button.addEventListener('click',()=>{
     const p=projects.find(p=>p.id===button.dataset.project);
     body.innerHTML=`<img class="case-cover" src="assets/${e(p.img)}.webp" alt="${e(p.title)}公开参考图"><div class="case-content"><p class="eyebrow">${e(p.kind)}</p><h2 id="dialog-title">${e(p.title)}</h2><p class="case-intro">${e(p.intro)}</p><p>${e(p.text)}</p><div class="case-role"><span>参与内容</span><span>${e(p.role)}</span></div>${p.extra.length?`<div class="case-extras">${p.extra.map(img=>`<img src="assets/${e(img)}.webp" alt="${e(p.title)}公开参考图" loading="lazy">`).join('')}</div>`:''}<p class="case-source">参考图片：<a href="${e(p.url)}" target="_blank" rel="noopener noreferrer">${e(p.source)} ↗</a><br>非本人拍摄或项目成片${p.id==='indigo'?'，不对应具体合作门店':''}。</p><p class="small-note">项目经历依据本人提供的作品集整理。</p></div>`;
-    openDialog(caseDialog,button);
-  }));
-  document.querySelectorAll('[data-account]').forEach(button=>button.addEventListener('click',()=>{
-    const id=button.dataset.account;
-    const p=id==='kim'?{name:'金贤重',img:'kim',fans:'7.8'}:accounts.find(a=>a.id===id);
-    const note=id==='kim'?'全案策划执行 · 7.8 万粉丝 / 34.3 万获赞。截图时间未提供。':`${p.group} · ${p.fans} 万粉丝。账号数据截至 2026.10.16。`;
-    body.innerHTML=`<div class="account-full"><p class="eyebrow">ACCOUNT SNAPSHOT</p><h2 id="dialog-title">${e(p.name)}</h2><p>${e(note)}<br>截图由本人提供，账号体量不代表个人任职期间增长。</p><img src="assets/${e(p.img)}.webp" alt="${e(p.name)}完整账号截图"></div>`;
     openDialog(caseDialog,button);
   }));
   document.querySelector('#credits-open').addEventListener('click',event=>openDialog(credits,event.currentTarget));
