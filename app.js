@@ -19,8 +19,10 @@
     openDialog(caseDialog,button);
   }));
   document.querySelectorAll('[data-account]').forEach(button=>button.addEventListener('click',()=>{
-    const p=accounts.find(a=>a.id===button.dataset.account);
-    body.innerHTML=`<div class="account-full"><p class="eyebrow">ACCOUNT SNAPSHOT</p><h2 id="dialog-title">${e(p.name)}</h2><p>${e(p.group)} · ${e(p.fans)} 万粉丝。账号数据截至 2026.10.16。<br>截图由本人提供，账号体量不代表个人任职期间增长。</p><img src="assets/${e(p.img)}.webp" alt="${e(p.name)}完整账号截图"></div>`;
+    const id=button.dataset.account;
+    const p=id==='kim'?{name:'金贤重',img:'kim',fans:'7.8'}:accounts.find(a=>a.id===id);
+    const note=id==='kim'?'全案策划执行 · 7.8 万粉丝 / 34.3 万获赞。截图时间未提供。':`${p.group} · ${p.fans} 万粉丝。账号数据截至 2026.10.16。`;
+    body.innerHTML=`<div class="account-full"><p class="eyebrow">ACCOUNT SNAPSHOT</p><h2 id="dialog-title">${e(p.name)}</h2><p>${e(note)}<br>截图由本人提供，账号体量不代表个人任职期间增长。</p><img src="assets/${e(p.img)}.webp" alt="${e(p.name)}完整账号截图"></div>`;
     openDialog(caseDialog,button);
   }));
   document.querySelector('#credits-open').addEventListener('click',event=>openDialog(credits,event.currentTarget));

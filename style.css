@@ -12,5 +12,3 @@
 /* Preserve the complete account image, including all data labels. */
 .kim-image{aspect-ratio:.95;align-self:center;min-height:0}.kim-image>img{object-fit:contain;object-position:top}
 @media(max-width:700px){.kim-image{aspect-ratio:.95}}
-
-.retained-accounts .account-heading{margin-top:0}
